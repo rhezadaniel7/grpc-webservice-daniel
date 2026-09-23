@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package produk;
+
+message Produk {
+  int32  id          = 1;
+  string nama        = 2;
+  int32  harga       = 3;
+  int32  stok        = 4;
+  int32  kategori_id = 5;
+}
+
+message GetProdukRequest {
+  int32 id = 1;
+}
+
+message ListProdukRequest {}
+
+message ListProdukResponse {
+  repeated Produk produk = 1;
+}
+
+service ProdukService {
+  rpc GetProduk (GetProdukRequest)   returns (Produk);
+  rpc ListProduk (ListProdukRequest) returns (ListProdukResponse);
+}
